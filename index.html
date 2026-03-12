@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Свадьба Михаил и Алеся</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Inter,sans-serif;
+background:#fbf8f6;
+color:#2b2b2b;
+}
+
+.container{
+max-width:520px;
+margin:auto;
+padding:40px 20px;
+text-align:center;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+background:
+linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),
+url("46.jpg");
+background-size:cover;
+background-position:center;
+}
+
+.names{
+font-family:Playfair Display;
+font-size:44px;
+margin-bottom:10px;
+animation:fadeUp 1.5s ease;
+}
+
+.date{
+letter-spacing:3px;
+margin-bottom:20px;
+animation:fadeUp 2s ease;
+}
+
+.timer{
+font-size:20px;
+margin-top:10px;
+animation:fadeUp 2.5s ease;
+}
+
+.section{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+h2{
+font-family:Playfair Display;
+margin-bottom:20px;
+font-size:30px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+margin-top:20px;
+}
+
+.program{
+text-align:left;
+}
+
+.program div{
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px solid #eee;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.gallery img{
+width:100%;
+border-radius:14px;
+}
+
+.button{
+display:inline-block;
+margin-top:20px;
+padding:14px 26px;
+background:black;
+color:white;
+border-radius:12px;
+text-decoration:none;
+font-weight:500;
+}
+
+.map{
+border-radius:16px;
+overflow:hidden;
+margin-top:20px;
+}
+
+.music-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:white;
+width:52px;
+height:52px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+cursor:pointer;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+.color-palette{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:10px;
+}
+
+.color{
+width:50px;
+height:50px;
+border-radius:50%;
+border:3px solid white;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.rsvp {
+display:flex;
+flex-direction:column;
+gap:12px;
+max-width:320px;
+margin:auto;
+}
+
+.rsvp-title{
+font-size:16px;
+opacity:0.8;
+}
+
+.rsvp-input{
+padding:12px 14px;
+border-radius:10px;
+border:1px solid #ddd;
+font-size:15px;
+font-family:inherit;
+transition:0.2s;
+}
+
+.rsvp-input:focus{
+outline:none;
+border-color:#c9a27c;
+box-shadow:0 0 0 2px rgba(201,162,124,0.15);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<div class="names">Михаил и Алеся</div>
+<div class="date">8 августа 2026</div>
+<div class="timer" id="timer"></div>
+</section>
+
+<!-- ПРИГЛАШЕНИЕ -->
+<section class="container section">
+<h2>Дорогие родные и близкие</h2>
+<p>
+Нам очень хочется, чтобы в этот важный для нас день, именно Вы были с нами!
+</p>
+</section>
+
+<!-- ИСТОРИЯ -->
+<section class="container section">
+<h2>Наша история</h2>
+<p>Началась в красивом торжественном мероприятии Молодёжного Сретенского Бала 2023 года</p>
+<p>
+</p>
+<div class="gallery">
+<img src="1.jpg">
+<img src="2.jpg">
+<img src="3.jpg">
+<img src="4.jpg">
+</div>
+</section>
+
+<!-- ПРОГРАММА -->
+<section class="container section">
+<h2>Программа дня</h2>
+
+<div class="card program">
+<div><span>16:30</span><span>Сбор гостей, welcome зона</span></div>
+<div><span>17:00-17:30</span><span>Выездная регистрация и поздравления</span></div>
+<div><span>17:30</span><span>Банкет</span></div>
+<div><span>21:00</span><span>Завершение вечера</span></div>
+</div>
+
+
+<!-- ЛОКАЦИЯ -->
+<section class="container section">
+<h2>Место проведения</h2>
+
+<div class="card">
+<p>Ресторан "Богемия"</p>
+<p>г. Саратов, ул. Железнодорожная, 72</p>
+
+<div class="map">
+<iframe
+src="https://maps.google.com/maps?q=saratov&t=&z=13&ie=UTF8&iwloc=&output=embed"
+width="100%"
+height="250"
+frameborder="0">
+</iframe>
+</div>
+
+<a class="button" href="https://www.google.com/maps/place/Bogemia+Terrace/@51.535859,45.996802,15z/data=!3m1!4b1!4m6!3m5!1s0x4114c791edfbb9eb:0xe62a2cbe5a23275b!8m2!3d51.5358594!4d46.0070803!16s%2Fg%2F11flbzg7sq?entry=ttu&g_ep=EgoyMDI2MDMwOS4wIKXMDSoASAFQAw%3D%3D">Открыть в Google Maps</a>
+
+</div>
+</section>
+
+<!-- RSVP -->
+<section class="container section">
+<h2>Подтвердите присутствие</h2>
+<p>Мы ждём Вас на первом празднике нашей семьи!</p>
+
+<div class="card">
+
+<p>Пожалуйста, ответьте до 1 августа</p>
+
+<input type="text" id="name" placeholder="Ваше имя">
+
+<select id="attendance">
+<option value="Буду">Буду</option>
+<option value="Не смогу">Не смогу</option>
+</select>
+
+<button class="button" onclick="sendRSVP()">Ответить</button>
+
+</div>
+
+</section>
+
+<!-- МУЗЫКА -->
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+<audio id="music" src="45.mp3" autoplay loop muted></audio>
+
+<div class="music-btn" onclick="toggleMusic()">♪</div>
+
+<script>
+const weddingDate = new Date("Aug 08, 2026 16:30:00").getTime();
+
+setInterval(() => {
+const now = new Date().getTime();
+const distance = weddingDate - now;
+
+const days = Math.floor(distance / (1000*60*60*24));
+const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+
+document.getElementById("timer").innerHTML =
+`${days} дней ${hours} часов ${minutes} минут`;
+},1000);
+
+// Ваша существующая функция
+function toggleMusic(){
+    const music = document.getElementById("music");
+    music.paused ? music.play() : music.pause();
+}
+
+// Автозапуск при первом клике в любом месте экрана
+document.addEventListener('click', function() {
+    const music = document.getElementById("music");
+    if (music.paused) {
+        music.play();
+    }
+}, { once: true }); // { once: true } заставит этот код сработать только ОДИН раз
+
+const sections = document.querySelectorAll(".section");
+
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+
+sections.forEach(section=>{
+observer.observe(section);
+});
+</script>
+
+<script>
+
+function sendRSVP(){
+
+let name = document.getElementById("name").value;
+let attendance = document.getElementById("attendance").value;
+
+let text = "RSVP\nИмя: " + name + "\nОтвет: " + attendance;
+
+fetch("https://api.telegram.org/bot8744864706:AAGazkh9oDC2H0rl36DKfM63dVit6-PTcSw/sendMessage", {
+method: "POST",
+headers: {"Content-Type": "application/json"},
+body: JSON.stringify({
+chat_id: "957306615",
+text: text
+})
+});
+
+alert("Спасибо! Ждём вас ❤️");
+
+}
+
+</script>
+
+</body>
+</html>
