@@ -138,6 +138,7 @@ align-items:center;
 justify-content:center;
 box-shadow:0 10px 25px rgba(0,0,0,0.2);
 cursor:pointer;
+z-index: 9999; 
 }
 
 @keyframes fadeUp{
@@ -226,6 +227,10 @@ display:none;
 font-size:14px;
 color:#666;
 }
+.card {
+  margin-bottom: 30px; /* Создает отступ снизу у каждой карточки */
+}
+
 </style>
 </head>
 
@@ -249,7 +254,7 @@ color:#666;
 <!-- ИСТОРИЯ -->
 <section class="container section">
 <h2>Наша история</h2>
-<p>Началась в красивом торжественном мероприятии Молодёжного Сретенского Бала 2023 года</p>
+<p>Началась на красивом торжественном мероприятии Молодёжного Сретенского Бала 2023 года</p>
 <p>
 </p>
 <div class="gallery">
@@ -257,6 +262,8 @@ color:#666;
 <img src="2.jpg">
 <img src="3.jpg">
 <img src="4.jpg">
+<img src="5.jpg">
+<img src="6.jpg">
 </div>
 </section>
 
@@ -274,58 +281,40 @@ color:#666;
 
 <!-- ЛОКАЦИЯ -->
 <section class="container section">
-<h2>Место проведения</h2>
+  <h2>Место проведения</h2>
 
-<div class="card">
-<p>Ресторан "Богемия"</p>
-<p>г. Саратов, ул. Железнодорожная, 72</p>
+  <!-- БЛОК 1: КАРТА -->
+  <div class="card">
+    <p>Ресторан "Богемия"</p>
+    <p>г. Саратов, ул. Железнодорожная, 72</p>
+    <div class="map">
+      <iframe src="https://maps.google.com/maps?q=saratov&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="250" frameborder="0"></iframe>
+    </div>
+    <a class="button" href="https://www.google.com...">Открыть в Google Maps</a>
+  </div> <!-- ЗАКРЫВАЕМ ПЕРВУЮ КАРТОЧКУ -->
 
-<div class="map">
-<iframe
-src="https://maps.google.com/maps?q=saratov&t=&z=13&ie=UTF8&iwloc=&output=embed"
-width="100%"
-height="250"
-frameborder="0">
-</iframe>
-</div>
+  <!-- БЛОК 2: RSVP (ОТВЕТ) -->
+  <div class="card rsvp"> <!-- ЭТО ТЕПЕРЬ ОТДЕЛЬНЫЙ КОНТЕЙНЕР -->
+    <p class="rsvp-title">Подтвердите, пожалуйста,  своё присутсвие до 25 июля ❤️</p>
+    <input type="text" id="guestName" placeholder="Ваше имя" class="rsvp-input" />
+    <div class="rsvp-buttons">
+      <button class="rsvp-btn yes" onclick="sendRSVP('Будет')">Буду</button>
+      <button class="rsvp-btn no" onclick="sendRSVP('Не сможет')">Не смогу</button>
+    </div>
+    <p id="rsvpThanks" class="rsvp-thanks">Спасибо за ответ ❤️</p>
+  </div>
 
-<a class="button" href="https://www.google.com/maps/place/Bogemia+Terrace/@51.535859,45.996802,15z/data=!3m1!4b1!4m6!3m5!1s0x4114c791edfbb9eb:0xe62a2cbe5a23275b!8m2!3d51.5358594!4d46.0070803!16s%2Fg%2F11flbzg7sq?entry=ttu&g_ep=EgoyMDI2MDMwOS4wIKXMDSoASAFQAw%3D%3D">Открыть в Google Maps</a>
+</section>
 
-<div class="card rsvp">
-
-<p class="rsvp-title">Пожалуйста, ответьте до 1 августа</p>
-
-<input 
-type="text" 
-id="guestName" 
-placeholder="Ваше имя"
-class="rsvp-input"
-/>
-
-<div class="rsvp-buttons">
-<button class="rsvp-btn yes" onclick="sendRSVP('Будет')">
-Буду
-</button>
-
-<button class="rsvp-btn no" onclick="sendRSVP('Не сможет')">
-Не смогу
-</button>
-</div>
-
-<p id="rsvpThanks" class="rsvp-thanks">
-Спасибо за ответ ❤️
-</p>
-
-</div>
-
+</script>
 <!-- МУЗЫКА -->
 <audio id="music" loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
-<audio id="music" src="45.mp3" autoplay loop muted></audio>
+
 
 <div class="music-btn" onclick="toggleMusic()">♪</div>
-
+</section>
 <script>
 const weddingDate = new Date("Aug 08, 2026 16:30:00").getTime();
 
