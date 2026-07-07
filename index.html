@@ -301,13 +301,27 @@ color:#666;
   <!-- БЛОК 2: RSVP (ОТВЕТ) -->
   <div class="card rsvp"> <!-- ЭТО ТЕПЕРЬ ОТДЕЛЬНЫЙ КОНТЕЙНЕР -->
     <p class="rsvp-title">Подтвердите, пожалуйста,  своё присутсвие до 25 июля ❤️</p>
-    <input type="text" id="guestName" placeholder="Ваше имя" class="rsvp-input" />
-    <div class="rsvp-buttons">
-      <button class="rsvp-btn yes" onclick="sendRSVP('Будет')">Буду</button>
-      <button class="rsvp-btn no" onclick="sendRSVP('Не сможет')">Не смогу</button>
-    </div>
-    <p id="rsvpThanks" class="rsvp-thanks">Спасибо за ответ ❤️</p>
-  </div>
+ <form action="https://script.google.com/macros/s/AKfycbx738uT7ZWGkPi3f8lwMgc61GQgbqm5DmdmjHKqjOYsQci00h2PnB7a7ulFwyLHn7Vd/exec" method="POST" target="hidden_iframe" onsubmit="showThanks()">
+
+<input type="text" name="name" id="guestName" placeholder="Ваше имя" class="rsvp-input">
+
+<input type="hidden" name="answer" id="answer">
+
+<button type="submit" class="rsvp-btn yes" onclick="document.getElementById('answer').value='Буду'">
+Буду
+</button>
+
+<button type="submit" class="rsvp-btn no" onclick="document.getElementById('answer').value='Не смогу'">
+Не смогу
+</button>
+
+</form>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<p id="rsvpThanks" class="rsvp-thanks">
+Спасибо за ответ ❤️
+</p>
 
 </section>
 
@@ -388,9 +402,12 @@ observer.observe(section);
     document.getElementById("guestName").value = "";
 
 }
-
+function showThanks(){
+    document.getElementById("rsvpThanks").style.display="block";
+}
 </script>
 
+  
 
 </body>
 </html>
