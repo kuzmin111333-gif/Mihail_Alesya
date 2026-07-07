@@ -373,14 +373,13 @@ observer.observe(section);
 
         if (!name) {
             alert("Пожалуйста, введите имя");
-            return;
+           return ContentService
+.createTextOutput("OK");
         }
 
         fetch("https://script.google.com/macros/s/AKfycbx738uT7ZWGkPi3f8lwMgc61GQgbqm5DmdmjHKqjOYsQci00h2PnB7a7ulFwyLHn7Vd/exec", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+           
             body: JSON.stringify({
                 name: name,
                 answer: answer
