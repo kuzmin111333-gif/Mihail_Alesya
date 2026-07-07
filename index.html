@@ -366,37 +366,32 @@ observer.observe(section);
 <p></p>
 
 <script>
+function sendRSVP(answer) {
 
-    function sendRSVP(answer) {
+    const name = document.getElementById("guestName").value.trim();
 
-        const name = document.getElementById("guestName").value.trim();
-
-        if (!name) {
-            alert("Пожалуйста, введите имя");
-           return ContentService
-.createTextOutput("OK");
-        }
-
-        fetch("https://script.google.com/macros/s/AKfycbx738uT7ZWGkPi3f8lwMgc61GQgbqm5DmdmjHKqjOYsQci00h2PnB7a7ulFwyLHn7Vd/exec", {
-            method: "POST",
-           
-            body: JSON.stringify({
-                name: name,
-                answer: answer
-            })
-        })
-        .then(r => r.json())
-        .then(() => {
-            document.getElementById("rsvpThanks").style.display = "block";
-            document.getElementById("guestName").value = "";
-        })
-        .catch(() => {
-            alert("Не удалось отправить ответ.");
-        });
-
+    if (!name) {
+        alert("Пожалуйста, введите имя");
+        return;
     }
 
+    fetch("https://script.google.com/macros/s/AKfycbx738uT7ZWGkPi3f8lwMgc61GQgbqm5DmdmjHKqjOYsQci00h2PnB7a7ulFwyLHn7Vd/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            name: name,
+            answer: answer
+        })
+    })
+    .then(() => {
+        document.getElementById("rsvpThanks").style.display = "block";
+        document.getElementById("guestName").value = "";
+    })
+    .catch(error => {
+        console.log(error);
+        alert("Не удалось отправить ответ.");
+    });
 
+}
 </script>
 
 
