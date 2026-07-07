@@ -288,7 +288,12 @@ color:#666;
     <p>Ресторан "Богемия"</p>
     <p>г. Саратов, ул. Железнодорожная, 72</p>
     <div class="map">
-      <iframe src="https://maps.google.com/maps?q=saratov&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="250" frameborder="0"></iframe>
+     <iframe
+         src="https://maps.google.com/maps?q=saratov&t=&z=13&ie=UTF8&iwloc=&output=embed"
+         width="100%"
+         height="250"
+         frameborder="0">
+     </iframe>
     </div>
     <a class="button" href="https://www.google.com/maps/place/Bogemia+Terrace/@51.5358627,46.0045,17z/data=!3m1!4b1!4m6!3m5!1s0x4114c791edfbb9eb:0xe62a2cbe5a23275b!8m2!3d51.5358594!4d46.0070803!16s%2Fg%2F11flbzg7sq?entry=ttu&g_ep=EgoyMDI2MDMxMC4wIKXMDSoASAFQAw%3D%3D">Открыть в Google Maps</a>
   </div> <!-- ЗАКРЫВАЕМ ПЕРВУЮ КАРТОЧКУ -->
@@ -306,7 +311,6 @@ color:#666;
 
 </section>
 
-</script>
 <!-- МУЗЫКА -->
 <audio id="music" loop>
 <source src="music.mp3" type="audio/mpeg">
@@ -363,34 +367,36 @@ observer.observe(section);
 
 <script>
 
-function sendRSVP(answer){
+    function sendRSVP(answer) {
 
-let name = document.getElementById("guestName").value;
+        const name = document.getElementById("guestName").value.trim();
 
-if(name === ""){
-alert("Пожалуйста, введите имя");
-return;
-}
+        if (!name) {
+            alert("Пожалуйста, введите имя");
+            return;
+        }
 
-let text =
-"💌 Новый ответ RSVP\n\n" +
-"👤 Имя: " + name + "\n" +
-"📩 Ответ: " + answer;
+        fetch("https://script.google.com/macros/s/AKfycbx738uT7ZWGkPi3f8lwMgc61GQgbqm5DmdmjHKqjOYsQci00h2PnB7a7ulFwyLHn7Vd/exec", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: name,
+                answer: answer
+            })
+        })
+        .then(r => r.json())
+        .then(() => {
+            document.getElementById("rsvpThanks").style.display = "block";
+            document.getElementById("guestName").value = "";
+        })
+        .catch(() => {
+            alert("Не удалось отправить ответ.");
+        });
 
-fetch("https://api.telegram.org/bot8744864706:AAGazkh9oDC2H0rl36DKfM63dVit6-PTcSw/sendMessage", {
-method: "POST",
-headers: {
-"Content-Type": "application/json"
-},
-body: JSON.stringify({
-chat_id: "-5234391475",
-text: text
-})
-});
+    }
 
-document.getElementById("rsvpThanks").style.display="block";
-
-}
 
 </script>
 
