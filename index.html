@@ -375,7 +375,8 @@ function sendRSVP(answer) {
         return;
     }
 
-    fetch("https://script.google.com/macros/s/AKfycbx738uT7ZWGkPi3f8lwMgc61GQgbqm5DmdmjHKqjOYsQci00h2PnB7a7ulFwyLHn7Vd/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbx738uT7ZWGkPi3f8lwMgc61GQgbqm5DmdmjHKqjOYsQci00h2PnB7a7ulFwyLHn7Vd/exec",
+     {
         method: "POST",
         mode: "no-cors",
         body: JSON.stringify({
